@@ -11,13 +11,16 @@ spec:
   source:
     repoURL: https://helm.releases.hashicorp.com
     chart: vault
-    targetRevision: 0.22.1
+    targetRevision: 0.21.0
     helm:
       releaseName: vault
   syncPolicy:
-    automated: {}
-    syncOptions
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
     - CreateNamespace=true
+
   ignoreDifferences:
   - group: admissionregistration.k8s.io
     kind: MutatingWebhookConfiguration
